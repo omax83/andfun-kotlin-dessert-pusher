@@ -86,9 +86,9 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         // Set the TextViews to the right values
         if (savedInstanceState!=null){
 
-            revenue=savedInstanceState.getInt(KEY_REVENUE)
-            dessertsSold=savedInstanceState.getInt(KEY_DESSERTS_SOLD)
-            dessertTimer.secondsCount=savedInstanceState.getInt(KEY_SECONDS_COUNT)
+            revenue=savedInstanceState.getInt(KEY_REVENUE,0)
+            dessertsSold=savedInstanceState.getInt(KEY_DESSERTS_SOLD,0)
+            dessertTimer.secondsCount=savedInstanceState.getInt(KEY_SECONDS_COUNT,0)
         }
         binding.revenue = revenue
         binding.amountSold = dessertsSold
@@ -200,8 +200,9 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         Timber.i("onDestroy Called")
+        super.onDestroy()
+
     }
 
     override fun onRestart() {
